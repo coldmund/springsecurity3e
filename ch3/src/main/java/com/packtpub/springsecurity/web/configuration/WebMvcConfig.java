@@ -35,7 +35,7 @@ import java.util.*;
         "com.packtpub.springsecurity.web.controllers",
         "com.packtpub.springsecurity.web.model"
 })
-public class WebMvcConfig extends WebMvcConfigurerAdapter
+public class WebMvcConfig implements WebMvcConfigurer
 {
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
@@ -138,7 +138,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
+        // super.addViewControllers(registry);
 
         registry.addViewController("/login/form")
                 .setViewName("login");
