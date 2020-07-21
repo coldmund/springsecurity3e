@@ -1,6 +1,5 @@
 package com.packtpub.springsecurity.configuration;
 
-import com.packtpub.springsecurity.web.configuration.SecurityConfig;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -12,10 +11,13 @@ import java.io.IOException;
 @Import({SecurityConfig.class, DataSourceConfig.class})
 @ComponentScan(basePackages =
         {
-                "com.packtpub.springsecurity.dataaccess",
-                "com.packtpub.springsecurity.domain",
-                "com.packtpub.springsecurity.service"
-        }
+            "com.packtpub.springsecurity"
+                // "com.packtpub.springsecurity.dataaccess",
+                // "com.packtpub.springsecurity.domain",
+                // "com.packtpub.springsecurity.service"
+        }, excludeFilters = {
+            @ComponentScan.Filter(type = FilterType.ASPECTJ, pattern = "com.packtpub.springsecurity.web.*")
+}
 )
 //@PropertySource(value = {"classpath:application.properties"})
 public class JavaConfig {
